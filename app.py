@@ -230,7 +230,3 @@ def service():
                                product_similar=product_similar,online_link=online_link)
     else:
         return "No product detected"
-
-if __name__ == "__main__":
-    initialize_camera()
-    app.run(host='0.0.0.0', port=5000)
