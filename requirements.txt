@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Flask==2.2.2
 Cohere==4.0.0
 Roboflow==0.2.20
@@ -5,3 +6,12 @@ opencv-python-headless==4.7.0.72
 requests==2.31.0
 google-generativeai==0.1.0
 Gunicorn
+=======
+Flask
+Cohere
+Roboflow
+opencv-python-headless
+requests
+google-generativeai
+Gunicorn
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f

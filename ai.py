@@ -38,7 +38,12 @@ def fetch_product_rating(product_name):
 
 def fetch_product_review(product_name):
     prompt = f"""
+<<<<<<< HEAD
     Please provide overall(positive and negative) very short review of the product '{product_name}' 
+=======
+    Please provide short information about the product '{product_name}' 
+    product review of 3 customer (dont put any star, headings,points)
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
     instruction make it in 2 lines
     """
 

@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, Response,jsonify,request,session,redirect,url_for,send_from_directory
+=======
+from flask import Flask, render_template, Response,jsonify,request,session,url_for,send_from_directory
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
 import cohere
 from  roboflow import Roboflow
 import cv2
 from flask import Response, jsonify
 import threading
+<<<<<<< HEAD
 import requests
 import feedparser
 from bs4 import BeautifulSoup
@@ -14,6 +19,10 @@ from ai_detail import fetch_details,fetch_similar
 from negative import fetch_review1
 from review import fetch_review
 from youtube import fetch_youtube_videos
+from social import fetch_social_trends
+from shopping import main
+from ai import fetch_product_details, fetch_product_rating, fetch_product_review, fetch_product_trends, fetch_product_similar
+from ai_detail import fetch_details, fetch_review,  fetch_similar
 app = Flask(__name__)
 app.secret_key = 'ScanXplore@1234'
 
@@ -51,6 +60,7 @@ def review():
     product_name=session.get('productname')
     product_re = fetch_review(product_name)
     product_review=remove_symbols(product_re)
+<<<<<<< HEAD
     product_re1 = fetch_review(product_name)
     product_review1=remove_symbols(product_re1)
     product_re2 = fetch_review1(product_name)
@@ -164,10 +174,15 @@ def get_google_news_rss(product):
     
     return articles
 
+=======
+
+    return render_template('review.html',product_review=product_review,product_name=product_name)
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
 
 @app.route('/SocialTrends')
 def Social_Trends():
     product_name=session.get('productname')
+<<<<<<< HEAD
     prod = product_name  
     prod = prod.replace(' ', ',') 
     google_news = get_google_news_rss(prod)
@@ -336,10 +351,16 @@ def scrape_images(product_name):
 
     return image_links
 
+=======
+    p1,p2,p3,p4 = fetch_social_trends(product_name)
+
+    return render_template('Social_Trends.html',p1=p1,p2=p2,p3=p3,p4=p4,product_name=product_name)
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
 
 @app.route('/similar')
 def similar():
     product_name=session.get('productname')
+<<<<<<< HEAD
     products = product_data.get(product_name, {}).get("products", [])
     images_data = []
 
@@ -364,6 +385,13 @@ def explore_product():
     session['productname'] = product_name
   
     return redirect(url_for('service'))
+=======
+    product_si = fetch_similar(product_name)
+    product_similar=remove_symbols(product_si)
+
+    return render_template('similar.html',product_similar=product_similar,product_name=product_name)
+
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
 
 @app.route('/project')
 def project():
@@ -510,6 +538,7 @@ def detect():
        
     else:
         return jsonify({"alert": "No matching image detected", "status": "failure"})
+<<<<<<< HEAD
     
 def get_google_news_rss1(product):
     rss_url = f"https://news.google.com/rss/search?q={product}&hl=en-US&gl=US&ceid=US:en"
@@ -541,20 +570,26 @@ def get_google_news_rss1(product):
     
     return articles
 
+=======
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
 
 @app.route('/service')
 def service():
     """Route to render the service page after detection."""
     product_name = session.get('productname')
+<<<<<<< HEAD
     prod = product_name  
     prod = prod.replace(' ', ',')  
     google_news = get_google_news_rss1(prod)
+=======
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
     if product_name:
         product_info = fetch_product_details(product_name)
         product_rating = fetch_product_rating(product_name)
         product_review = fetch_product_review(product_name)
         product_trends = fetch_product_trends(product_name)
         product_similar = fetch_product_similar(product_name)
+<<<<<<< HEAD
         product_re6 = fetch_review(product_name)
         product_review6=remove_symbols(product_re6)
         product_re7 = fetch_review(product_name)
@@ -563,11 +598,15 @@ def service():
         product_review8=remove_symbols(product_re8)
         online_link = main(product_name)
         link1,link2,link3=fetch_youtube_videos(product_name)
+=======
+        online_link = main(product_name)
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
         return render_template('service.html',
                                product_info=product_info,
                                product_name=product_name,
                                product_rating=product_rating,
                                product_review=product_review,
+<<<<<<< HEAD
                                product_trends=product_trends,product_data=google_news, prod=prod,
                                product_similar=product_similar,online_link=online_link,product_review6=product_review6,product_review7=product_review7,product_review8=product_review8,link1=link1,link2=link2
                                )
@@ -577,3 +616,9 @@ def service():
 if __name__ == "__main__":
     initialize_camera()
     app.run(host='0.0.0.0', port=5000)
+=======
+                               product_trends=product_trends,
+                               product_similar=product_similar,online_link=online_link)
+    else:
+        return "No product detected"
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f

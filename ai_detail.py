@@ -36,6 +36,21 @@ def fetch_rating(product_name):
 
     return response.text
 
+<<<<<<< HEAD
+=======
+def fetch_review(product_name):
+    prompt = f"""
+    Please provide detail information about the product '{product_name}' 
+    in that product review of some 3 customer 
+    instruction make it as customer 1: review till 50 customer review
+    """
+
+    model = genai.GenerativeModel('gemini-1.5-flash')
+
+    response = model.generate_content(prompt)
+
+    return response.text
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
 
 def fetch_trends(product_name):
     prompt = f"""
@@ -52,8 +67,15 @@ def fetch_trends(product_name):
 
 def fetch_similar(product_name):
     prompt = f"""
+<<<<<<< HEAD
     Please provide information about some 5 similar products (list by comma seperating) of the product '{product_name}' 
     (dont put any star, headings,points) """
+=======
+    Please provide detailed information about some 5 similar products (list by comma seperating) of the product '{product_name}' 
+    (dont put any star, headings,points)
+    instruction 1. similar product name : in next line make detailed infornmation of that product , make line this for maximum 10 similar products 
+    """
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
 
     model = genai.GenerativeModel('gemini-1.5-flash')
 

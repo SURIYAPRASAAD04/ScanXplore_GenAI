@@ -262,9 +262,13 @@ h6,
 }
 
 .service-item:hover h5,
+<<<<<<< HEAD
 .service-item:hover p,
 .service-item:hover pre
  {
+=======
+.service-item:hover p {
+>>>>>>> 21519aabe54663bd377341fc9c236730daab707f
     color: var(--light);
 }
 
